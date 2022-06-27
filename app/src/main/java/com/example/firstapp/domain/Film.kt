@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.utils
 
 import android.app.Activity
 import android.view.View

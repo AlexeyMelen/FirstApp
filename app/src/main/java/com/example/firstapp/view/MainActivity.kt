@@ -1,9 +1,12 @@
-package com.example.firstapp
+package com.example.firstapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.widget.Toast
+import com.example.firstapp.R
+import com.example.firstapp.domain.Film
+import com.example.firstapp.view.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

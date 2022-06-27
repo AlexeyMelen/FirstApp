@@ -1,8 +1,11 @@
-package com.example.firstapp
+package com.example.firstapp.view.rv_adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstapp.view.rv_viewholders.FilmViewHolder
+import com.example.firstapp.R
+import com.example.firstapp.domain.Film
 import kotlinx.android.synthetic.main.film_item.view.*
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.view.rv_adapters
 
 import android.content.res.Resources
 import android.graphics.Rect

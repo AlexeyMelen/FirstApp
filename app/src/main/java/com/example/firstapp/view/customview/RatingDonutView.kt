@@ -1,9 +1,10 @@
-package com.example.firstapp
+package com.example.firstapp.view.customview
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.example.firstapp.R
 
 class RatingDonutView @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null) : View(context, attributeSet) {
     private val oval = RectF()

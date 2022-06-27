@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/background_favorites.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/background_main.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/background_search_view.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/background_selections.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_seletions.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/background_watch_later.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/ic_baseline_collections.xml" value="0.1425" />

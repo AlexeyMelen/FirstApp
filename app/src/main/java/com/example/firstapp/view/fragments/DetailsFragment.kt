@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.firstapp.data.ApiConstants
 import com.example.firstapp.R
 import com.example.firstapp.domain.Film
 import kotlinx.android.synthetic.main.fragment_details.*
@@ -51,7 +54,10 @@ class DetailsFragment : Fragment() {
         film = arguments?.get("film") as Film
 
         details_toolbar.title = film.title
-        details_poster.setImageResource(film.poster)
+        Glide.with(this)
+            .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+            .centerCrop()
+            .into(details_poster)
         details_description.text = film.description
 
         details_fab_favorites.setImageResource(

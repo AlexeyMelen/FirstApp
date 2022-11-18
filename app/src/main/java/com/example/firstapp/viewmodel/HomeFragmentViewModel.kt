@@ -2,13 +2,14 @@ package com.example.firstapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.firstapp.App
 import com.example.firstapp.domain.Film
 import com.example.firstapp.domain.Interactor
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class HomeFragmentViewModel : ViewModel() {
-    val filmsListLiveData = MutableLiveData<List<Film>>()
-    private var interactor: Interactor = App.instance.interactor
+class HomeFragmentViewModel : ViewModel(), KoinComponent {
+    val filmsListLiveData: MutableLiveData<List<Film>> = MutableLiveData()
+    private val interactor: Interactor = by inject()
     init {
 
 

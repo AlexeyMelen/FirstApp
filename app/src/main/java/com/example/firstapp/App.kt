@@ -11,11 +11,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            //Прикрепляем контекст
             androidContext(this@App)
-            //(Опционально) подключаем зависимость
             androidLogger()
-            //Инициализируем модули
             modules(listOf(DI.mainModule))
         }
     }

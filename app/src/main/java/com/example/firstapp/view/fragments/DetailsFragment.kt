@@ -10,35 +10,37 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.firstapp.data.ApiConstants
 import com.example.firstapp.R
+import com.example.firstapp.databinding.FragmentDetailsBinding
 import com.example.firstapp.domain.Film
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
     private lateinit var film: Film
+    private lateinit var binding: FragmentDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
+    ): View {
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setFilmsDetails()
 
-        details_fab_favorites.setOnClickListener {
+        binding.detailsFabFavorites.setOnClickListener {
             if (!film.isInFavorites) {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_24)
+                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_24)
                 film.isInFavorites = true
             } else {
-                details_fab_favorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.detailsFabFavorites.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 film.isInFavorites = false
             }
         }
 
-        details_fab_share.setOnClickListener {
+        binding.detailsFabShare.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
             intent.putExtra(
@@ -53,14 +55,14 @@ class DetailsFragment : Fragment() {
     private fun setFilmsDetails() {
         film = arguments?.get("film") as Film
 
-        details_toolbar.title = film.title
+        binding.detailsToolbar.title = film.title
         Glide.with(this)
             .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
             .centerCrop()
-            .into(details_poster)
-        details_description.text = film.description
+            .into(binding.detailsPoster)
+        binding.detailsDescription.text = film.description
 
-        details_fab_favorites.setImageResource(
+        binding.detailsFabFavorites.setImageResource(
             if (film.isInFavorites) R.drawable.ic_baseline_favorite_24
             else R.drawable.ic_baseline_favorite_border_24
         )

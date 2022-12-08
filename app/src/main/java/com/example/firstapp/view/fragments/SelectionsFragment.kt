@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.firstapp.R
+import com.example.firstapp.databinding.FragmentSelectionsBinding
 import com.example.firstapp.utils.AnimationHelper
 import kotlinx.android.synthetic.main.fragment_selections.*
 
 class SelectionsFragment : Fragment() {
-
+    private lateinit var binding: FragmentSelectionsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_selections, container, false)
+    ): View {
+        binding = FragmentSelectionsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.firstapp.R
+import com.example.firstapp.databinding.FragmentWatchLaterBinding
 import com.example.firstapp.utils.AnimationHelper
 import kotlinx.android.synthetic.main.fragment_watch_later.*
 
 class WatchLaterFragment : Fragment() {
+    private lateinit var binding: FragmentWatchLaterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_watch_later, container, false)
+    ): View {
+        binding = FragmentWatchLaterBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

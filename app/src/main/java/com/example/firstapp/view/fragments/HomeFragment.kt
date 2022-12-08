@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import com.example.firstapp.databinding.FragmentHomeBinding
 import com.example.firstapp.view.rv_adapters.FilmListRecyclerAdapter
 import com.example.firstapp.view.MainActivity
-import com.example.firstapp.R
 import com.example.firstapp.view.rv_adapters.TopSpacingItemDecoration
 import com.example.firstapp.domain.Film
 import com.example.firstapp.utils.AnimationHelper
@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
         ViewModelProvider.NewInstanceFactory().create(HomeFragmentViewModel::class.java)
     }
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
-
+    private lateinit var binding: FragmentHomeBinding
     private var filmsDataBase = listOf<Film>()
         set(value) {
             if (field == value) return
@@ -40,8 +40,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,11 +52,23 @@ class HomeFragment : Fragment() {
 
         initSearchView()
 
+        initPullToRefresh()
+
         initRecyckler()
 
         viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>> {
             filmsDataBase = it
+            filmsAdapter.addItems(it)
         })
+
+    }
+
+    private fun initPullToRefresh() {
+        binding.pullToRefresh.setOnRefreshListener {
+            filmsAdapter.items.clear()
+            viewModel.getFilms()
+            binding.pullToRefresh.isRefreshing = false
+        }
     }
 
     private fun initSearchView() {
